@@ -1,0 +1,251 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
+/* Définir les classes personnalisées Tailwind selon la DA */
+@layer utilities {
+  /* Couleurs Teal */
+  .bg-teal { 
+    background-color: #008080; 
+  }
+  .bg-teal-light { 
+    background-color: #40B0B0; 
+  }
+  .text-teal { 
+    color: #008080; 
+  }
+  .border-teal { 
+    border-color: #008080; 
+  }
+  .ring-teal { 
+    --tw-ring-color: #008080; 
+  }
+  .ring-teal-light { 
+    --tw-ring-color: #40B0B0; 
+  }
+  .focus\:ring-teal:focus { 
+    --tw-ring-color: #008080; 
+  }
+  .focus\:ring-teal\/20:focus { 
+    --tw-ring-color: rgb(0 128 128 / 0.2); 
+  }
+  
+  /* Hover states pour teal */
+  .hover\:bg-teal\/90:hover { 
+    background-color: rgb(0 128 128 / 0.9); 
+  }
+  .hover\:bg-teal\/10:hover { 
+    background-color: rgb(0 128 128 / 0.1); 
+  }
+  .hover\:bg-teal\/5:hover { 
+    background-color: rgb(0 128 128 / 0.05); 
+  }
+  .hover\:bg-teal-light\/80:hover { 
+    background-color: rgb(64 176 176 / 0.8); 
+  }
+  
+  /* Polices selon DA */
+  .font-heading { 
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif; 
+  }
+  .font-sans { 
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif; 
+  }
+  
+  /* Classes couleurs DA */
+  .text-da-primary { color: #333333; }
+  .text-da-secondary { color: #666666; }
+  .text-muted { color: #999999; }
+  .text-secondary { color: #666666; }
+  .bg-da-primary { background-color: #F5F5F5; }
+  .bg-da-secondary { background-color: #E0E0E0; }
+}
+
+:root {
+  --background: #F5F5F5;
+  --foreground: #333333;
+  
+  /* LinkVault Color Palette - Direction Artistique */
+  --primary: #008080;        /* Couleur Principale (Teal) */
+  --primary-hover: #006666;  /* Teal plus foncé au hover */
+  --secondary: #40B0B0;      /* Teal Clair */
+  --accent: #40B0B0;         /* Teal Clair pour les accents */
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --success: #008080;        /* Utiliser le teal principal pour succès */
+  
+  /* Couleurs de fond selon DA */
+  --background-primary: #F5F5F5;    /* Blanc cassé */
+  --background-secondary: #E0E0E0;  /* Gris clair pour cartes */
+  --background-white: #FFFFFF;      /* Blanc pur pour les cartes principales */
+  
+  /* Couleurs de texte selon DA */
+  --text-primary: #333333;   /* Gris foncé */
+  --text-secondary: #666666; /* Gris moyen */
+  --text-muted: #999999;     /* Gris plus clair pour texte discret */
+  
+  /* Gray scale harmonisé */
+  --gray-50: #F5F5F5;
+  --gray-100: #E0E0E0;
+  --gray-200: #CCCCCC;
+  --gray-300: #B3B3B3;
+  --gray-400: #999999;
+  --gray-500: #666666;
+  --gray-600: #4D4D4D;
+  --gray-700: #333333;
+  --gray-800: #1A1A1A;
+  --gray-900: #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Open Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--background-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(3deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05) rotate(-1deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.98) rotate(0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-bounce {
+  animation: modalBounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Focus states */
+.focus-ring {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Classes pour respecter la direction artistique */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.bg-primary { background-color: var(--background-primary); }
+.bg-secondary { background-color: var(--background-secondary); }
+.bg-white { background-color: var(--background-white); }
+
+.border-teal { border-color: var(--primary); }
+.text-teal { color: var(--primary); }
+.bg-teal { background-color: var(--primary); }
+.bg-teal-light { background-color: var(--secondary); }
+
+/* Custom cursor styles */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
